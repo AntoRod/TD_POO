@@ -4,7 +4,6 @@ import datas.*;
 
 public class TestCounter {
 	public static void main(String[] args) {
-	//Test du compteur classic
 	Counter counter = new Counter();
 	System.out.println(counter);
 	counter.increase();
