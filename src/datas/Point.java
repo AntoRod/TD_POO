@@ -2,8 +2,8 @@ package datas;
 
 public class Point {
 	
-	protected int absciss;
-	protected int ordinate;
+	private int absciss;
+	private int ordinate;
 	
 	/*CONSTRUCTEURS*/
 	public Point() {
