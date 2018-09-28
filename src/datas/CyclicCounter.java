@@ -7,10 +7,10 @@ public class CyclicCounter extends BoundedCounter{
 	
 	/*CONSTRUCTEURS*/
 	public CyclicCounter() {
-		this(0);
+		this(0, 60);
 	}
-	public CyclicCounter(int startNumber) {
-		super(startNumber);
+	public CyclicCounter(int startNumber, int maxNumber) {
+		super(startNumber, maxNumber);
 		cycleCount = 0;
 	}
 	/*FIN CONSTRUCTEURS*/

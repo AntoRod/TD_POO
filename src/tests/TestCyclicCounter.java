@@ -4,7 +4,7 @@ import datas.*;
 
 public class TestCyclicCounter {
 	public static void main(String[] args) {
-		CyclicCounter cyclicCounter = new CyclicCounter();
+		CyclicCounter cyclicCounter = new CyclicCounter(0, 100);
 		System.out.println(cyclicCounter);
 		cyclicCounter.increase();
 		System.out.println(cyclicCounter);

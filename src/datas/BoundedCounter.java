@@ -2,14 +2,15 @@ package datas;
 
 public class BoundedCounter extends Counter {
 	
-	protected static final int maxValue = 100;
+	protected int maxValue;
 	
 	/*CONSTRUCTEURS*/
 	public BoundedCounter() {
-		this(0);
+		this(0, 60);
 	}
-	public BoundedCounter(int startNumber) {
+	public BoundedCounter(int startNumber, int maxNumber) {
 		super(startNumber);
+		maxValue = maxNumber;
 	}
 	/*FIN CONSTRUCTEURS*/
 	/*MUTATEURS*/

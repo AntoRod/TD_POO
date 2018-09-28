@@ -4,7 +4,7 @@ import datas.*;
 
 public class TestBoundedCounter {
 	public static void main(String[] args) {
-		BoundedCounter boundedCounter = new BoundedCounter(5);
+		BoundedCounter boundedCounter = new BoundedCounter(5,100);
 		System.out.println(boundedCounter);
 		boundedCounter.increase();
 		System.out.println(boundedCounter);
