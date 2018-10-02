@@ -35,6 +35,10 @@ public class Point {
 	}
 	/*FIN SETTERS*/
 	/*MUTATEURS*/
+	public void moveBy(int newAbsciss, int newOrdinate) {
+		absciss += newAbsciss;
+		ordinate += newOrdinate;
+	}
 	public String toString() {
 		return "Coordinates: ["+getAbsciss()+"]["+getOrdinate()+"]\n";
 	}

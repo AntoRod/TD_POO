@@ -12,5 +12,7 @@ public class TestPoint {
 		System.out.println(point);
 		point.setCoordinates(17, -12);
 		System.out.println(point);
+		point.moveBy(10, -4);
+		System.out.println(point);
 	}
 }

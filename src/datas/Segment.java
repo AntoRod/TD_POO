@@ -38,6 +38,10 @@ public class Segment {
 		firstPoint = newFirstPoint;
 		secondPoint = newSecondPoint;
 	}
+	public void moveBy(int firstAbsciss, int firstOrdinate, int secondAbsciss, int secondOrdinate) {
+		firstPoint.moveBy(firstAbsciss, firstOrdinate);
+		secondPoint.moveBy(secondAbsciss, secondOrdinate);
+	}
 	public String toString() {
 		return "First Point: "+getFirstPoint()+"Second Point: "+getSecondPoint()+"Distance :"+getLength()+"\n";
 	}
