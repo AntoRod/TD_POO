@@ -48,7 +48,7 @@ public class CyclicCounter extends BoundedCounter{
 		else value-=quantity;
 	}
 	public String toString() {
-		return "Cycle = "+ getCycle() +", Value = "+ getValue() +"/"+maxValue+"\n";
+		return "Cycle = "+ getCycle() +super.toString();
 	}
 	/*FIN MUTATEURS*/
 }

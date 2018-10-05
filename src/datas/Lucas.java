@@ -19,7 +19,8 @@ public class Lucas {
 		return lucasNumber;
 	}
 	public int getLucas(int indice) {
-		return lucasNumber[indice];
+		if(indice < maxLucas) return lucasNumber[indice];
+		else return -1;
 	}
 	public int getLength() {
 		return maxLucas;

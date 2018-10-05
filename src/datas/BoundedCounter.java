@@ -22,7 +22,7 @@ public class BoundedCounter extends Counter {
 		else value+= quantity;
 	}
 	public String toString() {
-		return "Value = "+ getValue() +"/"+maxValue+"\n";
+		return super.toString()+"/"+maxValue+"\n";
 	}
 	/*FIN MUTATEURS*/
 	
