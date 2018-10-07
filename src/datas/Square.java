@@ -1,12 +1,12 @@
 package datas;
 
-public class Square extends Rectangle{
+public class Square extends AbstractFigure{
 
 	public Square() {
-		super();
+		this(10);
 	}
 	public Square(int startWidth) {
-		super(startWidth, startWidth);
+		width = startWidth;
 	}
 	
 	public double getWidth() {
@@ -24,7 +24,7 @@ public class Square extends Rectangle{
 		return width*width;
 	}
 	public String toString() {
-		return super.toString();
+		return getClass().getSimpleName()+": Width: "+getWidth();
 	}
 	
 	
