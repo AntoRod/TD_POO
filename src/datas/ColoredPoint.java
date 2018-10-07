@@ -25,7 +25,7 @@ public class ColoredPoint extends Point{
 	}
 	
 	public String toString() {
-		return super.toString()+ "Color: "+getColor()+"\n";
+		return super.toString()+ ", Color: "+getColor()+"";
 	}
 
 }

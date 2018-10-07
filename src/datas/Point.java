@@ -40,7 +40,7 @@ public class Point {
 		coordinates[1] += newOrdinate;
 	}
 	public String toString() {
-		return "Coordinates: ["+getAbsciss()+"]["+getOrdinate()+"]\n";
+		return "Coordinates: ["+getAbsciss()+"]["+getOrdinate()+"]";
 	}
 	/*FIN MUTATEURS*/
 }
