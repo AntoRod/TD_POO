@@ -41,7 +41,7 @@ public class Contact {
 	/*FIN SETTERS*/
 	/*MUTATEURS*/
 	public String toString() {
-		return "Name: "+getName()+", Phone: "+getPhone()+", Mail: "+getMail()+"\n";
+		return "Name: "+getName()+", Phone: "+getPhone()+", Mail: "+getMail();
 	}
 	/*FIN MUTATEURS*/
 	
