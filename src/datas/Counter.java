@@ -1,9 +1,9 @@
 package datas;
 
-public class Counter {
+public class Counter implements Counting{
 	
-	protected int value;
-	protected static final int minValue = 0;
+	private int value;
+	private static final int minValue = 0;
 	
 	/*CONSTRUCTEURS*/
 	public Counter() {
@@ -16,6 +16,9 @@ public class Counter {
 	/*GETTERS*/
 	public int getValue() {
 		return value;
+	}
+	public int getMinValue() {
+		return minValue;
 	}
 	/*FIN GETTERS*/
 	/*SETTERS*/
@@ -36,10 +39,10 @@ public class Counter {
 	}
 	public void decrease(int quantity) {
 		if(value-quantity>minValue) value-= quantity;
-		else value = 0;
+		else value = minValue;
 	}
 	public String toString() {
-		return "Value = "+ getValue() +"\n";
+		return "Value = "+ getValue();
 	}
 	/*FIN MUTATEURS*/
 }

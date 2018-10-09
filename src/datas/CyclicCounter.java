@@ -1,8 +1,8 @@
 package datas;
 
-public class CyclicCounter extends BoundedCounter{
+public class CyclicCounter extends BoundedCounter implements Counting {
 	
-	//ajout personnel, pas besoin de borner à 0
+	//ajout personnel, pas besoin de borner à 0 (le cycle peut être negatif)
 	protected int cycleCount;
 	
 	/*CONSTRUCTEURS*/
@@ -21,34 +21,34 @@ public class CyclicCounter extends BoundedCounter{
 	/*FIN GETTERS*/
 	/*MUTATEURS*/
 	public void increase() {
-		if(value==maxValue) {
-			value = 0;
+		if(getValue() == getMaxValue()) {
+			setValue(0);
 			cycleCount++;
 		}
-		else value++;
+		else super.increase();
 	}
 	public void increase(int quantity) {
-		if(value+quantity > maxValue) {
-			cycleCount += (value+quantity)/maxValue;
-			value = (value+quantity)%maxValue;
+		if(getValue()+quantity > getMaxValue()) {
+			cycleCount += (getValue()+quantity)/getMaxValue();
+			setValue((getValue()+quantity)%getMaxValue());
 		}
-		else value += quantity;
+		else increase(quantity);
 	}
 	public void decrease() {
-		if(value==minValue) {
-			value=maxValue-1;
+		if(getValue()==getMinValue()) {
+			setValue(getMaxValue()-1);
 			cycleCount--;
 		}
 	}
 	public void decrease(int quantity) {
-		if(value-quantity < minValue) {
-			cycleCount -= (value-quantity)/maxValue;
-			value = Math.abs(value-quantity)%maxValue;
+		if(getValue()-quantity < getMinValue()) {
+			cycleCount -= (getValue()-quantity)/getMaxValue();
+			setValue(Math.abs(getValue()-quantity)%getMaxValue());
 		}
-		else value-=quantity;
+		else super.decrease(quantity);
 	}
 	public String toString() {
-		return "Cycle = "+ getCycle() +super.toString();
+		return "Cycle = "+ getCycle() +", "+super.toString();
 	}
 	/*FIN MUTATEURS*/
 }
