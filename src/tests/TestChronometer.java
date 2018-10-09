@@ -8,8 +8,8 @@ public class TestChronometer {
 		System.out.println(chronometer);
 		while(true) {
 			try {
-				Thread.sleep(10);
-				chronometer.increase();
+				Thread.sleep(1);
+				chronometer.decrease();
 				System.out.println(chronometer);
 			} catch (InterruptedException e) {e.printStackTrace();}
 
