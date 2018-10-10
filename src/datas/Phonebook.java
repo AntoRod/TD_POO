@@ -1,60 +1,57 @@
 package datas;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 public class Phonebook implements Phonebook_Interface{
 	
-	private Contact[] phonebook;
-	private int maxContact;
+	private ArrayList<Contact> phonebook;
 	
 	public Phonebook() {
 		this(20);
 	}
 	public Phonebook(int contactMax) {
-		maxContact = contactMax;
-		phonebook = new Contact[20];
+		phonebook = new ArrayList<Contact>();
 	}
 	
 	public Contact getContact(int indice) {
-		return phonebook[indice];
+		return phonebook.get(indice);
 	}
-	public Contact[] getPhoneBook() {
+	public ArrayList<Contact> getPhoneBook() {
 		return phonebook;
 	}
-	
+	/* DEVENU INUTILE
 	private void setContact(int indice, Contact newContact) {
-		if(indice >= 0 && indice < maxContact) phonebook[indice] = newContact;
+		phonebook.add(indice, newContact);
 	}
+	*/
 	public void addContact(Contact newContact) {
-		int i=0;
-		while(phonebook[i] != null) i++;
-		setContact(i, newContact);
+		phonebook.add(newContact);
 	}
 	public void addContact(String name, String number, String mail) {
 		addContact(new Contact(name, number, mail));
 	}
 	
 	public Boolean searchByName(String name) {
-		for(int i=0;i<maxContact;i++) {
-			if(phonebook[i] != null) {
-				if(phonebook[i].getName() == name) return true;
-			}
+		Iterator<Contact> iterator = phonebook.iterator();
+		while(iterator.hasNext()) {
+			if(iterator.next().getName().equals(name)) return true;
 		}
 		return false;
 	}
 	public Boolean searchByNumber(String number) {
-		for(int i=0;i<maxContact;i++) {
-			if(phonebook[i] != null) {
-				if(phonebook[i].getPhone() == number) return true;
-			}
+		Iterator<Contact> iterator = phonebook.iterator();
+		while(iterator.hasNext()) {
+			if(iterator.next().getPhone().equals(number)) return true;
 		}
 		return false;
 	}
 	
-	
 	public String toString() {
 		String string = "Phonebook: \n";
-		for(int i=0;i<maxContact;i++) {
-			if(i%5==0) string+="\n";
-			string+="{"+phonebook[i]+"}";
+		Iterator<Contact> iterator = phonebook.iterator();
+		while(iterator.hasNext()) {
+			string+= "{"+iterator.next().toString()+"}";
 		}
 		string+="\n";
 		return string;
