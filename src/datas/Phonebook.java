@@ -1,6 +1,6 @@
 package datas;
 
-public class Phonebook {
+public class Phonebook implements Phonebook_Interface{
 	
 	private Contact[] phonebook;
 	private int maxContact;
