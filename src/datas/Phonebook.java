@@ -1,57 +1,60 @@
 package datas;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
-public class Phonebook implements Phonebook_Interface{
+public class Phonebook {
 	
-	private ArrayList<Contact> phonebook;
+	private Contact[] phonebook;
+	private int maxContact;
 	
 	public Phonebook() {
 		this(20);
 	}
 	public Phonebook(int contactMax) {
-		phonebook = new ArrayList<Contact>();
+		maxContact = contactMax;
+		phonebook = new Contact[20];
 	}
 	
 	public Contact getContact(int indice) {
-		return phonebook.get(indice);
+		return phonebook[indice];
 	}
-	public ArrayList<Contact> getPhoneBook() {
+	public Contact[] getPhoneBook() {
 		return phonebook;
 	}
-	/* DEVENU INUTILE
+	
 	private void setContact(int indice, Contact newContact) {
-		phonebook.add(indice, newContact);
+		if(indice >= 0 && indice < maxContact) phonebook[indice] = newContact;
 	}
-	*/
 	public void addContact(Contact newContact) {
-		phonebook.add(newContact);
+		int i=0;
+		while(phonebook[i] != null) i++;
+		setContact(i, newContact);
 	}
 	public void addContact(String name, String number, String mail) {
 		addContact(new Contact(name, number, mail));
 	}
 	
 	public Boolean searchByName(String name) {
-		Iterator<Contact> iterator = phonebook.iterator();
-		while(iterator.hasNext()) {
-			if(iterator.next().getName().equals(name)) return true;
+		for(int i=0;i<maxContact;i++) {
+			if(phonebook[i] != null) {
+				if(phonebook[i].getName() == name) return true;
+			}
 		}
 		return false;
 	}
 	public Boolean searchByNumber(String number) {
-		Iterator<Contact> iterator = phonebook.iterator();
-		while(iterator.hasNext()) {
-			if(iterator.next().getPhone().equals(number)) return true;
+		for(int i=0;i<maxContact;i++) {
+			if(phonebook[i] != null) {
+				if(phonebook[i].getPhone() == number) return true;
+			}
 		}
 		return false;
 	}
 	
+	
 	public String toString() {
 		String string = "Phonebook: \n";
-		Iterator<Contact> iterator = phonebook.iterator();
-		while(iterator.hasNext()) {
-			string+= "{"+iterator.next().toString()+"}";
+		for(int i=0;i<maxContact;i++) {
+			if(i%5==0) string+="\n";
+			string+="{"+phonebook[i]+"}";
 		}
 		string+="\n";
 		return string;
