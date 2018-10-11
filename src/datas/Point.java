@@ -10,8 +10,8 @@ public class Point {
 	}
 	public Point(int startAbsciss, int startOrdinate) {
 		coordinates = new int[2];
-		coordinates[0] = startAbsciss;
-		coordinates[1] = startOrdinate;
+		setAbsciss(startAbsciss);
+		setOrdinate(startOrdinate);
 	}
 	/*FIN CONSTRUCTEURS*/
 	/*GETTERS*/
@@ -23,11 +23,13 @@ public class Point {
 	}
 	/*FIN GETTERS*/
 	/*SETTERS*/
-	public void setAbsciss(int newAbsciss) {
-		coordinates[0] = newAbsciss;
+	public void setAbsciss(int newAbsciss) throws IllegalArgumentException{
+		if(newAbsciss > -500 && newAbsciss < 500) coordinates[0] = newAbsciss;
+		else throw new IllegalArgumentException();
 	}
 	public void setOrdinate(int newOrdinate) {
-		coordinates[1] = newOrdinate;
+		if(isValideCoordinate(newOrdinate)) coordinates[1] = newOrdinate;
+		else throw new IllegalArgumentException();
 	}
 	public void setCoordinates(int newAbsciss, int newOrdinate) {
 		setAbsciss(newAbsciss);
@@ -35,6 +37,11 @@ public class Point {
 	}
 	/*FIN SETTERS*/
 	/*MUTATEURS*/
+	private Boolean isValideCoordinate(int coordinate) {
+		if(coordinate < 500 && coordinate > -500) return true;
+		else return false;
+	}
+	
 	public void moveBy(int newAbsciss, int newOrdinate) {
 		coordinates[0] += newAbsciss;
 		coordinates[1] += newOrdinate;
