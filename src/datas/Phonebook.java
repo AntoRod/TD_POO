@@ -1,6 +1,6 @@
 package datas;
 
-public class Phonebook {
+public class Phonebook implements Phonebook_Interface{
 	
 	private Contact[] phonebook;
 	private int maxContact;
@@ -36,6 +36,24 @@ public class Phonebook {
 		for(int i=0;i<maxContact;i++) {
 			if(phonebook[i] != null) {
 				if(phonebook[i].getName() == name) return true;
+			}
+		}
+		return false;
+	}
+	public Boolean searchByFirstName(String firstName) {
+		for(int i=0;i<maxContact;i++) {
+			if(phonebook[i] != null) {
+				if(phonebook[i].getFirstName() == firstName) return true;
+			}
+		}
+		return false;
+	}
+	public Boolean searchFullName(String name, String firstName) {
+		for(int i=0;i<maxContact;i++) {
+			if(phonebook[i] != null) {
+				if(phonebook[i].getName() == name) {
+					if(phonebook[i].getFirstName() == firstName) return true;
+				}
 			}
 		}
 		return false;
