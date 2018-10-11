@@ -28,8 +28,8 @@ public class Phonebook {
 		while(phonebook[i] != null) i++;
 		setContact(i, newContact);
 	}
-	public void addContact(String name, String number, String mail) {
-		addContact(new Contact(name, number, mail));
+	public void addContact(String name, String firstName, String number, String homeNumber, String mail) {
+		addContact(new Contact(name, firstName, number, homeNumber, mail));
 	}
 	
 	public Boolean searchByName(String name) {
@@ -53,8 +53,7 @@ public class Phonebook {
 	public String toString() {
 		String string = "Phonebook: \n";
 		for(int i=0;i<maxContact;i++) {
-			if(i%5==0) string+="\n";
-			string+="{"+phonebook[i]+"}";
+			string+="{"+phonebook[i]+"}\n";
 		}
 		string+="\n";
 		return string;

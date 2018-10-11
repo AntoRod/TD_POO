@@ -6,15 +6,15 @@ public class TestPhonebook {
 	public static void main(String[] args) {
 		Phonebook phonebook = new Phonebook(20);
 		System.out.print(phonebook);
-		phonebook.addContact(new Contact("Jean","0123456789","Jean@test.fr"));
-		phonebook.addContact(new Contact("Kevin","0987654321","Kevin@test.fr"));
-		phonebook.addContact(new Contact("Pierre","0691564020","Pierre@test.fr"));
+		phonebook.addContact(new Contact("Duran", "Kevin","0923456789", "0654985623", "Kevin-Duran@test.fr"));
+		phonebook.addContact(new Contact("Dupont", "Pierre", "0987654321", "0452169853","Pierre-Dupont@test.fr"));
+		phonebook.addContact(new Contact("Truc", "Vincent", "0691564020", "0965123658","Vincent-Truc@test.fr"));
 		System.out.print(phonebook);
-		Boolean search = phonebook.searchByName("Jean");
+		Boolean search = phonebook.searchByName("Duran");
 		System.out.println(search);
-		search = phonebook.searchByName("Jeannine");
+		search = phonebook.searchByName("Krousti");
 		System.out.println(search);
-		search = phonebook.searchByNumber("0123456789");
+		search = phonebook.searchByNumber("0923456789");
 		System.out.println(search);
 		search = phonebook.searchByNumber("0123056886");
 		System.out.println(search);

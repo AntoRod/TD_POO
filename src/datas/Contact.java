@@ -2,17 +2,21 @@ package datas;
 
 public class Contact {
 	
-	protected String name; //Plus tard: modifier en nom/prénom
-	protected String phone;
-	protected String mail;
+	private String name;
+	private String firstName;
+	private String phone;
+	private String homePhone;
+	private String mail;
 
 	/*CONSTRUCTEURS*/
 	public Contact() {
-		this(null, null, null);
+		this(null, null, null, null, null);
 	}
-	public Contact(String startName, String startPhone, String startMail) {
+	public Contact(String startName, String startFirstName, String startPhone, String startHomePhone, String startMail) {
 		setName(startName);
-		if(startPhone != null) setPhone(startPhone);
+		setFirstName(startFirstName);
+		setPhone(startPhone);
+		setHomePhone(startHomePhone);
 		setMail(startMail);
 	}
 	/*FIN CONSTRUCTEURS*/
@@ -20,8 +24,14 @@ public class Contact {
 	public String getName() {
 		return name;
 	}
+	public String getFirstName() {
+		return firstName;
+	}
 	public String getPhone() {
 		return phone;
+	}
+	public String getHomePhone() {
+		return homePhone;
 	}
 	public String getMail() {
 		return mail;
@@ -31,8 +41,15 @@ public class Contact {
 	public void setName(String newName) {
 		name = newName;
 	}
+	public void setFirstName(String newFirstName) {
+		firstName = newFirstName;
+	}
 	public void setPhone(String newPhone) {
 		if(newPhone.startsWith("0") && newPhone.length() == 10) phone = newPhone;
+		else System.out.println("Wrong phone number\n");
+	}
+	public void setHomePhone(String newHomePhone) {
+		if(newHomePhone.startsWith("0") && newHomePhone.length() == 10) homePhone = newHomePhone;
 		else System.out.println("Wrong phone number\n");
 	}
 	public void setMail(String newMail) {
@@ -41,7 +58,7 @@ public class Contact {
 	/*FIN SETTERS*/
 	/*MUTATEURS*/
 	public String toString() {
-		return "Name: "+getName()+", Phone: "+getPhone()+", Mail: "+getMail();
+		return "Name: "+getName()+", First Name: "+getFirstName()+", Phone: "+getPhone()+", Home Phone: "+getHomePhone()+", Mail: "+getMail();
 	}
 	/*FIN MUTATEURS*/
 	
