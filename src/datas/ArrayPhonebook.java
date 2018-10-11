@@ -50,9 +50,12 @@ public class ArrayPhonebook implements Phonebook_Interface{
 		return false;
 	}
 	public Boolean searchFullName(String name, String firstName) {
-		for(int i=0;i<phonebook.size();i++) {
-			if(phonebook.get(i).getName().equals(name)) {
-				if(phonebook.get(i).getFirstName().equals(firstName)) return true;
+		Iterator<Contact> iterator = phonebook.iterator();
+		Contact temp;
+		while(iterator.hasNext()) {
+			temp = iterator.next();
+			if(temp.getName().equals(name)) {
+				if(temp.getFirstName().equals(firstName)) return true;
 			}
 		}
 		return false;
