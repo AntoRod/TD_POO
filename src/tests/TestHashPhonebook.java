@@ -6,9 +6,11 @@ public interface TestHashPhonebook {
 	public static void main(String[] args) {
 		Phonebook_Interface hashPhonebook = new HashPhonebook();
 		System.out.println(hashPhonebook);
-		hashPhonebook.addContact(new Contact("Duran", "Kevin","0923456789", "0654985623", "Kevin-Duran@test.fr"));
-		hashPhonebook.addContact(new Contact("Dupont", "Pierre", "0987654321", "0452169853","Pierre-Dupont@test.fr"));
-		hashPhonebook.addContact(new Contact("Truc", "Vincent", "0691564020", "0965123658","Vincent-Truc@test.fr"));
+		try {
+			hashPhonebook.addContact(new Contact("Duran", "Kevin","0923456789", "0654985623", "Kevin-Duran@test.fr"));
+			hashPhonebook.addContact(new Contact("Dupont", "Pierre", "0987654321", "0452169853","Pierre-Dupont@test.fr"));
+			hashPhonebook.addContact(new Contact("Truc", "Vincent", "0691564020", "0965123658","Vincent-Truc@test.fr"));
+		} catch (ElementAlreadyExistsException e) {e.printStackTrace();}
 		System.out.println(hashPhonebook);
 		Boolean search = hashPhonebook.searchByName("Duran");
 		System.out.println("Duran, "+search);

@@ -2,72 +2,117 @@ package datas;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class ArrayPhonebook implements Phonebook_Interface{
 	
+	//ATTRIBUTS
+	//Une ArrayList pour stocker les contacts dans le répertoire
 	private ArrayList<Contact> phonebook;
 	
+	/*CONSTRUCTEURS*/
 	public ArrayPhonebook() {
 		phonebook = new ArrayList<Contact>();
 	}
+	/*FIN CONSTRUCTEURS*/
+	/*GETTERS*/
 	public Contact getContact(int indice) {
 		return phonebook.get(indice);
 	}
 	public ArrayList<Contact> getPhoneBook() {
 		return phonebook;
 	}
-	/* DEVENU INUTILE
-	private void setContact(int indice, Contact newContact) {
-		phonebook.add(indice, newContact);
-	}
-	*/
-	public void addContact(Contact newContact) {
-		phonebook.add(newContact);
-	}
-	public void addContact(String name, String firstName, String number, String homeNumber, String mail) {
-		addContact(new Contact(name, firstName, number, homeNumber, mail));
-	}
-	
-	public Boolean searchByName(String name) {
-		Iterator<Contact> iterator = phonebook.iterator();
-		while(iterator.hasNext()) {
-			if(iterator.next().getName().equals(name)) return true;
-		}
-		return false;
-	}
-	public Boolean searchByFirstName(String firstName) {
-		Iterator<Contact> iterator = phonebook.iterator();
-		while(iterator.hasNext()) {
-			if(iterator.next().getFirstName().equals(firstName)) return true;
-		}
-		return false;
-	}
-	public Boolean searchByNumber(String number) {
-		Iterator<Contact> iterator = phonebook.iterator();
-		while(iterator.hasNext()) {
-			if(iterator.next().getPhone().equals(number)) return true;
-		}
-		return false;
-	}
-	public Boolean searchFullName(String name, String firstName) {
-		Iterator<Contact> iterator = phonebook.iterator();
-		Contact temp;
-		while(iterator.hasNext()) {
-			temp = iterator.next();
-			if(temp.getName().equals(name)) {
-				if(temp.getFirstName().equals(firstName)) return true;
-			}
-		}
-		return false;
-	}
+	/*FIN GETTERS*/
+	/*PAS DE SETTERS*/
+	/*TOSTRING*/
 	public String toString() {
+		///Variable servant de buffer
 		String string = "Phonebook (ArrayList): \n";
+		//Utilisation d'Iterator (while hasNext: next)
 		Iterator<Contact> iterator = phonebook.iterator();
 		while(iterator.hasNext()) {
-			string+= "{"+iterator.next().toString()+"}\n";
+			//Buffering
+			string+= iterator.next().toString()+"\n";
 		}
 		string+="\n";
 		return string;
 	}
-
+	/*FIN TOSTRING*/
+	/*AUTRES METHODES*/
+	//Ajouter un contact au répertoire
+	public void addContact(Contact newContact) throws ElementAlreadyExistsException {
+		//Si le contact n'existe pas, l'ajouter
+		if(!exists(newContact)) {
+			phonebook.add(newContact);
+		}
+		//Sinon lancer l'erreur "le contact existe déjà"
+		else throw new ElementAlreadyExistsException("Contact "+newContact+" Already Exists\n");
+	}
+	//Aouter un contact au répertoire (attribut par attribut)
+	public void addContact(String name, String firstName, String number, String homeNumber, String mail) throws ElementAlreadyExistsException{
+		addContact(new Contact(name, firstName, number, homeNumber, mail));
+	}
+	//Vérifie l'existence d'un contact dans le répertoire
+	public Boolean exists(Contact newContact) {
+		//Utilisation d'Iterator (while hasNext: next)
+		Iterator<Contact> iterator = phonebook.iterator();
+		while(iterator.hasNext()) {
+			//Si le contact existe, retourner vrai
+			if(iterator.next().equals(newContact)) return true;
+		}
+		//Sinon retourner faux
+		return false;
+	}
+	//Rechercher un contact par nom
+	public Boolean searchByName(String name) throws NoSuchElementException {
+		Iterator<Contact> iterator = phonebook.iterator();
+		//Utilisation d'Iterator (while hasNext: next)
+		while(iterator.hasNext()) {
+			//Si le contact existe, retourner vrai
+			if(iterator.next().getName().equals(name)) return true;
+		}
+		//Sinon lancer l'exception "le contact n'existe pas"
+		throw new NoSuchElementException("There is no "+name+" in the Phonebook");
+	}
+	//Rechercher un contact par son prénom
+	public Boolean searchByFirstName(String firstName) throws NoSuchElementException {
+		//Utilisation d'Iterator (while hasNext: next)
+		Iterator<Contact> iterator = phonebook.iterator();
+		while(iterator.hasNext()) {
+			//Si le contact existe, retourner vrai
+			if(iterator.next().getFirstName().equals(firstName)) return true;
+		}
+		//Sinon lancer l'exception "le contact n'existe pas"
+		throw new NoSuchElementException("There is no "+firstName+" in the Phonebook");
+	}
+	//Rechercher un contact par numéro de téléphone
+	public Boolean searchByNumber(String number) throws NoSuchElementException {
+		//Utilisation d'Iterator (while hasNext: next)
+		Iterator<Contact> iterator = phonebook.iterator();
+		while(iterator.hasNext()) {
+			//Si le contact existe, retourner vrai
+			if(iterator.next().getPhone().equals(number)) return true;
+		}
+		//Sinon lancer l'exception "le contact n'existe pas"
+		throw new NoSuchElementException("Number "+number+" is not in the Phonebook");
+	}
+	//Rechercher un contact par nom + prénom
+	public Boolean searchFullName(String name, String firstName) throws NoSuchElementException {
+		//Utilisation d'Iterator (while hasNext: next)
+		Iterator<Contact> iterator = phonebook.iterator();
+		//On stock le contact dans une variable temporaire
+		Contact temp;
+		while(iterator.hasNext()) {
+			//On stock le contact suivant dans la variable
+			temp = iterator.next();
+			//Si le nom existe, on vérifie le prénom
+			if(temp.getName().equals(name)) {
+				//Si le prénom est le bon, retourner vrai
+				if(temp.getFirstName().equals(firstName)) return true;
+			}
+		}
+		//Sinon lancer l'exception "le contact n'existe pas"
+		throw new NoSuchElementException("There is no "+name+ " "+firstName+" in the Phonebook");
+	}
+	/*FIN AUTRES METHODES*/
 }
