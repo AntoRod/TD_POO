@@ -6,28 +6,24 @@ public class Square extends AbstractFigure{
 		this(10);
 	}
 	public Square(int startWidth) {
-		width = startWidth;
+		setWidth(startWidth);
 	}
 	
 	public double getWidth() {
-		return width;
+		return super.getWidth();
 	}
 	
 	public void setWidth(double newWidth) {
-		width = newWidth;
+		super.setWidth(newWidth);
 	}
 	
 	public double calculatePerimeter() {
-		return width*4;
+		return getWidth()*4;
 	}
 	public double calculateArea() {
-		return width*width;
+		return getWidth()*getWidth();
 	}
 	public String toString() {
 		return getClass().getSimpleName()+": Width: "+getWidth();
 	}
-	
-	
-
-	
 }

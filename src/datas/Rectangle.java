@@ -8,29 +8,29 @@ public class Rectangle extends AbstractFigure{
 		this(10,10);
 	}
 	public Rectangle(double startWidth, double startLength) {
-		width = startWidth;
-		length = startLength;
+		setWidth(startWidth);
+		setLength(startLength);
 	}
 	
 	public double getWidth() {
-		return width;
+		return super.getWidth();
 	}
 	public double getLength() {
 		return length;
 	}
 	
 	public void setWidth(double newWidth) {
-		width = newWidth;
+		super.setWidth(newWidth);
 	}
 	public void setLength(double newLength) {
 		length = newLength;
 	}
 	
 	public double calculatePerimeter() {
-		return width*2+length*2;
+		return getWidth()*2+getLength()*2;
 	}
 	public double calculateArea() {
-		return width*length;
+		return getWidth()*getLength();
 	}
 	public String toString() {
 		return getClass().getSimpleName()+": Width: "+getWidth()+", Length: "+getLength();

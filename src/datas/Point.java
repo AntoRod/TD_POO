@@ -3,6 +3,9 @@ package datas;
 public class Point {
 	
 	private int[] coordinates;
+	//CONSTANTES (plus tard: définir avec une méthode)
+	private static int upCap = 500;//cap positif des coordonnées
+	private static int downCap = -500;//cap négatif des coordonnées
 	
 	/*CONSTRUCTEURS*/
 	public Point() {
@@ -24,10 +27,10 @@ public class Point {
 	/*FIN GETTERS*/
 	/*SETTERS*/
 	public void setAbsciss(int newAbsciss) throws IllegalArgumentException{
-		if(newAbsciss > -500 && newAbsciss < 500) coordinates[0] = newAbsciss;
+		if(isValideCoordinate(newAbsciss)) coordinates[0] = newAbsciss;
 		else throw new IllegalArgumentException();
 	}
-	public void setOrdinate(int newOrdinate) {
+	public void setOrdinate(int newOrdinate) throws IllegalArgumentException{
 		if(isValideCoordinate(newOrdinate)) coordinates[1] = newOrdinate;
 		else throw new IllegalArgumentException();
 	}
@@ -38,13 +41,15 @@ public class Point {
 	/*FIN SETTERS*/
 	/*MUTATEURS*/
 	private Boolean isValideCoordinate(int coordinate) {
-		if(coordinate < 500 && coordinate > -500) return true;
+		if(coordinate <= upCap && coordinate >= downCap) return true;
 		else return false;
 	}
 	
 	public void moveBy(int newAbsciss, int newOrdinate) {
-		coordinates[0] += newAbsciss;
-		coordinates[1] += newOrdinate;
+		if(isValideCoordinate(coordinates[0]+newAbsciss)) coordinates[0] += newAbsciss;
+		else throw new IllegalArgumentException();
+		if(isValideCoordinate(coordinates[1]+newOrdinate)) coordinates[1] += newOrdinate;
+		else throw new IllegalArgumentException();
 	}
 	public String toString() {
 		return "Coordinates: ["+getAbsciss()+"]["+getOrdinate()+"]";

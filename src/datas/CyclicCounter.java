@@ -2,7 +2,8 @@ package datas;
 
 public class CyclicCounter extends BoundedCounter implements Counting {
 	
-	//ajout personnel, pas besoin de borner à 0 (le cycle peut être negatif)
+	//ATTRIBUTS
+	//ajout personnel, Compteur de cycle (peut être négatif comme positif)
 	private int cycleCount;
 	
 	/*CONSTRUCTEURS*/
@@ -19,29 +20,45 @@ public class CyclicCounter extends BoundedCounter implements Counting {
 		return cycleCount;
 	}
 	/*FIN GETTERS*/
-	/*MUTATEURS*/
-	public void increase() {
-		increase(1);
-	}
-	public void increase(int quantity) {
-		if(getValue()+quantity > getMaxValue()) {
-			cycleCount += (getValue()+quantity)/getMaxValue();
-			setValue((getValue()+quantity)%(getMaxValue()+1));
-		}
-		else super.increase(quantity);
-	}
-	public void decrease() {
-		decrease(1);
-	}
-	public void decrease(int quantity) {
-		if(getValue()-quantity < getMinValue()) {
-			cycleCount -=((getMaxValue()+quantity)/getMaxValue());
-			setValue(Math.abs(getValue()+getMaxValue()-(quantity%getMaxValue()-1)));
-		}
-		else super.decrease(quantity);
-	}	
+	/*PAS DE SETTERS (utilisation du setter mère)*/
+	/*TOSTRING*/
 	public String toString() {
 		return "Cycle = "+ getCycle() +", "+super.toString();
 	}
-	/*FIN MUTATEURS*/
+	/*FIN TOSTRING*/
+	/*AUTRES METHODES*/
+	//Incrémenter le compteur de 1
+	public void increase() {
+		increase(1);
+	}
+	//Incrémenter le compteur d'une certaine quantité (Méthode par défaut, au lieu de faire une boucle d'incrémentation de 1)
+	public void increase(int quantity) {
+		//Si le compteur dépasse le max
+		if(getValue()+quantity > getMaxValue()) {
+			//Ajouter des cycles au compteur de cycles (quantité du compteur + quantité ajoutée divisée par la valeur max)
+			cycleCount += (getValue()+quantity)/getMaxValue();
+			//Mettre le compteur à la valeur modulo max+1 (le max étant compris dans le compteur, le modulo doit être de 1 supérieur au max)
+			setValue((getValue()+quantity)%(getMaxValue()+1));
+		}
+		//Sinon on incrémenter la quantité voulue
+		else super.increase(quantity);
+	}
+	//Décrémenter le compteur de 1
+	public void decrease() {
+		decrease(1);
+	}
+	//Décrémenter le compteur d'une certaine quantité (Méthode par défaut, au lieu de faire une boucle de décrémentation de 1)
+	public void decrease(int quantity) {
+		//Si le compteur devient négatif
+		if(getValue()-quantity < getMinValue()) {
+			//Enlever des cycles au compteur de cycles (quantité du compteur + quantité enlevée divisé par la valeur max)
+			//IMPORTANT: enlever les valeurs additionnées
+			cycleCount -=((getMaxValue()+quantity)/getMaxValue());
+			//Mettre le compteur à la valeur absolue de la valeur + le max, moins la quantité modulo max-1 (le max étant compris dans le compteur, le modulo doit être de 1 inférieur au max
+			setValue(Math.abs(getValue()+getMaxValue()-(quantity%getMaxValue()-1)));
+		}
+		//Sinon décrémenter la quantité voulue
+		else super.decrease(quantity);
+	}
+	/*FIN AUTRES METHODES*/
 }
