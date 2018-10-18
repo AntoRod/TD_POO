@@ -24,6 +24,7 @@ public class TestChronometer {
 				}
 				System.out.print(chronometer+"\n");
 			} catch (InterruptedException e) {e.printStackTrace();}
+			  catch (LimitReachedException e) {e.printStackTrace();}
 		}
 	}
 }

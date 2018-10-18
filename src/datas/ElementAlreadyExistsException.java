@@ -1,11 +1,11 @@
 package datas;
 
 public class ElementAlreadyExistsException extends Exception{
-
-	private static final long serialVersionUID = 1L;
+	
+	private static final long serialVersionUID = -526912133759244115L;
 	
 	//Exception "l'élement existe déjà"
-	
+
 	/*CONSTRUCTEURS*/
 	public ElementAlreadyExistsException() {
 		this(null);

@@ -49,13 +49,16 @@ public class Chronometer implements Counting{
 	/*FIN TOSTRING*/
 	/*AUTRES METHODES*/
 	//Incrémenter le compteur de 1
-	public void increase() {
+	public void increase() throws LimitReachedException {
 		//Si les secondes sont au max
 		if(seconds.getValue() == seconds.getMaxValue()) {
 			//Si les minutes sont au max
 			if(minutes.getValue() == minutes.getMaxValue()) {
 				//Incrémenter les heures de 1
 				hours.increase();
+				if(hours.getValue() == hours.getMaxValue()) {
+					throw new LimitReachedException("Limit has already been reached, can't increase anymore\n");
+				}
 			}
 			//Sinon incrémenter les minutes de 1
 			minutes.increase();
@@ -64,7 +67,7 @@ public class Chronometer implements Counting{
 		seconds.increase();
 	}
 	//Incrémenter le compteur d'une certaine quantité
-	public void increase(int quantity) {
+	public void increase(int quantity) throws LimitReachedException {
 		//Boucle d'incrémentation de 1
 		while(quantity>0) {
 			increase();

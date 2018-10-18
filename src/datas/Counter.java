@@ -35,11 +35,11 @@ public class Counter implements Counting{
 	/*FIN TOSTRING*/
 	/*AUTERS METHODES*/
 	//Incrémenter le compteur de 1
-	public void increase() {
+	public void increase() throws LimitReachedException {
 		value++;
 	}
 	//Incrémenter le compteur d'une certaine quantité
-	public void increase(int quantity) {
+	public void increase(int quantity) throws LimitReachedException {
 		value+= quantity;
 	}
 	//Décrémenter le compteur de 1

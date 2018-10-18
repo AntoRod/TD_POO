@@ -29,14 +29,15 @@ public class BoundedCounter extends Counter implements Counting {
 	/*FIN TOSTRING*/
 	/*AUTRES METHODES*/
 	//Incrémentation du compteur de 1  
-	public void increase() {
+	public void increase() throws LimitReachedException {
 		//Incrémentation de la classe mère utilisée
 		if(getValue() < maxValue) super.increase();
+		else throw new LimitReachedException("Limit has already been reached, can't increase anymore\n");
 	}
 	//Incrémentation du compteur d'une certaine quantité
-	public void increase(int quantity) {
+	public void increase(int quantity) throws LimitReachedException {
 		//Si le max est atteint, on met la valeur au maximum
-		if(getValue() + quantity > maxValue) setValue(maxValue);
+		if(getValue() + quantity > maxValue) throw new LimitReachedException("Can't increase by "+quantity+", Limit would be exceeded\n");
 		//Sinon on incrémente de la quantité voulue
 		else super.increase(quantity);
 	}

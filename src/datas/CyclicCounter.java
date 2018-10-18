@@ -28,11 +28,11 @@ public class CyclicCounter extends BoundedCounter implements Counting {
 	/*FIN TOSTRING*/
 	/*AUTRES METHODES*/
 	//Incrémenter le compteur de 1
-	public void increase() {
+	public void increase() throws LimitReachedException {
 		increase(1);
 	}
 	//Incrémenter le compteur d'une certaine quantité (Méthode par défaut, au lieu de faire une boucle d'incrémentation de 1)
-	public void increase(int quantity) {
+	public void increase(int quantity) throws LimitReachedException {
 		//Si le compteur dépasse le max
 		if(getValue()+quantity > getMaxValue()) {
 			//Ajouter des cycles au compteur de cycles (quantité du compteur + quantité ajoutée divisée par la valeur max)
