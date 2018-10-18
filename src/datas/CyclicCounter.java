@@ -32,7 +32,7 @@ public class CyclicCounter extends BoundedCounter implements Counting {
 		increase(1);
 	}
 	//Incrémenter le compteur d'une certaine quantité (Méthode par défaut, au lieu de faire une boucle d'incrémentation de 1)
-	public void increase(int quantity) throws LimitReachedException {
+	public void increase(int quantity) {
 		//Si le compteur dépasse le max
 		if(getValue()+quantity > getMaxValue()) {
 			//Ajouter des cycles au compteur de cycles (quantité du compteur + quantité ajoutée divisée par la valeur max)
@@ -44,7 +44,7 @@ public class CyclicCounter extends BoundedCounter implements Counting {
 		else super.increase(quantity);
 	}
 	//Décrémenter le compteur de 1
-	public void decrease() {
+	public void decrease() throws LimitReachedException {
 		decrease(1);
 	}
 	//Décrémenter le compteur d'une certaine quantité (Méthode par défaut, au lieu de faire une boucle de décrémentation de 1)

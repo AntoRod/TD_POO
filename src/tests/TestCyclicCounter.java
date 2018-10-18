@@ -9,8 +9,9 @@ public class TestCyclicCounter {
 		while(true) {
 			try {
 				Thread.sleep(100);
+				cyclicCounter.decrease(9);
 			} catch (InterruptedException e) {e.printStackTrace();}
-			cyclicCounter.decrease(9);
+
 			System.out.println(cyclicCounter);	
 		}
 

@@ -14,9 +14,11 @@ public class TestBoundedCounter {
 			System.out.println(boundedCounter);
 			boundedCounter.decrease();
 			System.out.println(boundedCounter);
-			boundedCounter.increase(100);
+			boundedCounter.increase(1);
 			System.out.println(boundedCounter);
 			boundedCounter.decrease(1000);
+			System.out.println(boundedCounter);
+			boundedCounter.increase(110);
 			System.out.println(boundedCounter);
 		} catch (LimitReachedException e) {e.printStackTrace();}
 	}

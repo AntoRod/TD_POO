@@ -75,7 +75,7 @@ public class Chronometer implements Counting{
 		}
 	}
 	//Décrémenter le compteur de 1
-	public void decrease() {
+	public void decrease() throws LimitReachedException {
 		//Si les secondes sont au minimum
 		if(seconds.getValue() == seconds.getMinValue()) {
 			//Si les minutes sont au minimum
@@ -90,7 +90,7 @@ public class Chronometer implements Counting{
 		seconds.decrease();
 	}
 	//Décrémenter le compteur d'une certaine quantité
-	public void decrease(int quantity) {
+	public void decrease(int quantity) throws LimitReachedException {
 		//Boucle de décrémentation de 1
 		while(quantity>0) {
 			decrease();

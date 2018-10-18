@@ -30,26 +30,30 @@ public class BoundedCounter extends Counter implements Counting {
 	/*AUTRES METHODES*/
 	//Incrémentation du compteur de 1  
 	public void increase() throws LimitReachedException {
-		//Incrémentation de la classe mère utilisée
+		//Si la valeur n'est pas au maximum, incrémentation (de la classe mère)
 		if(getValue() < maxValue) super.increase();
-		else throw new LimitReachedException("Limit has already been reached, can't increase anymore\n");
+		//Sinon lancer une LRE
+		else throw new LimitReachedException("Counter already at maximal value, can't increase anymore");
 	}
 	//Incrémentation du compteur d'une certaine quantité
-	public void increase(int quantity) throws LimitReachedException {
-		//Si le max est atteint, on met la valeur au maximum
-		if(getValue() + quantity > maxValue) throw new LimitReachedException("Can't increase by "+quantity+", Limit would be exceeded\n");
-		//Sinon on incrémente de la quantité voulue
+	public void increase(int quantity) {
+		//Si la limite maximum est atteinte, lancer et gérer une LRE
+		if(getValue() + quantity > maxValue) {
+			try {
+				//On lance l'exception
+				throw new LimitReachedException("Can't increase by "+quantity+", Limit would be exceeded");
+				//On attrape l'exception
+			} catch (LimitReachedException e) {
+				//On affiche l'erreur
+				System.out.println(e.getLocalizedMessage());
+				//On modifie la valeur du compteur
+				setValue(getMaxValue());
+				//On signal que la valeur a été modifiée
+				System.out.println("value has been set to maximum: "+this);
+			}
+		}
+		//Sinon, incrémentation (de la classe mère)
 		else super.increase(quantity);
-	}
-	//Décrémentation du compteur de 1
-	public void decrease() {
-		//Décrémentation de la classe mère utilisée
-		super.decrease();
-	}
-	//Décrémentation du compteur d'une certaine quantité
-	public void decrease(int quantity) {
-		//Décrémentation de la classe mère utilisée
-		super.decrease(quantity);
 	}
 	/*FIN AUTRES METHODES*/
 	
