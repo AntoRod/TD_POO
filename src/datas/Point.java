@@ -1,7 +1,8 @@
 package datas;
 
 public class Point {
-	
+	//ATTRIBUTS
+	//Un tableau de coordonnées et des bornes superieur et inferieur
 	private int[] coordinates;
 	//CONSTANTES (plus tard: définir avec une méthode)
 	private static int upCap = 500;//cap positif des coordonnées
@@ -39,20 +40,29 @@ public class Point {
 		setOrdinate(newOrdinate);
 	}
 	/*FIN SETTERS*/
-	/*MUTATEURS*/
-	private Boolean isValideCoordinate(int coordinate) {
-		if(coordinate <= upCap && coordinate >= downCap) return true;
-		else return false;
-	}
-	
-	public void moveBy(int newAbsciss, int newOrdinate) {
-		if(isValideCoordinate(coordinates[0]+newAbsciss)) coordinates[0] += newAbsciss;
-		else throw new IllegalArgumentException();
-		if(isValideCoordinate(coordinates[1]+newOrdinate)) coordinates[1] += newOrdinate;
-		else throw new IllegalArgumentException();
-	}
+	/*TOSTRING*/
 	public String toString() {
 		return "Coordinates: ["+getAbsciss()+"]["+getOrdinate()+"]";
 	}
-	/*FIN MUTATEURS*/
+	/*FIN TOSTRING*/
+	/*AUTRES METHODES*/
+	//Vérifie la validité d'une coordonée
+	private Boolean isValideCoordinate(int coordinate) {
+		//Si elle est entre les bornes superieur et inferieur, retourner vrai
+		if(coordinate <= upCap && coordinate >= downCap) return true;
+		//Sinon retourner faux
+		else return false;
+	}
+	//Déplacer le point de (x, y) coordonnées
+	public void moveBy(int newAbsciss, int newOrdinate) {
+		//On vérifie la validité de l'absciss APRES deplacement
+		if(isValideCoordinate(coordinates[0]+newAbsciss)) coordinates[0] += newAbsciss;
+		//Si invalide, lancer exception
+		else throw new IllegalArgumentException();
+		//On vérifie la validité de l'ordinate APRES deplacement
+		if(isValideCoordinate(coordinates[1]+newOrdinate)) coordinates[1] += newOrdinate;
+		//Si onvalide, lancer exception
+		else throw new IllegalArgumentException();
+	}
+	/*FIN AUTRES METHODES*/
 }

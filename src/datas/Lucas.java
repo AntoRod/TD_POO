@@ -2,6 +2,8 @@ package datas;
 
 public class Lucas {
 	
+	//ATTRIBUTS
+	//Tableau de int et un nomvre de int max dans le tableau
 	private int[] lucasNumber;
 	private int maxLucas;
 	
@@ -26,26 +28,33 @@ public class Lucas {
 		return maxLucas;
 	}
 	/*FIN GETTERS*/
-	/*MUTATEURS*/
+	/*PAS DE SETTERS*/
+	/*TOSTRING*/
+	public String toString() {
+		String string = new String();
+		string+=("Tab size: "+getLength());
+		for(int i=0; i<getLength(); i++) {
+			if(i%10 == 0) string+=("\n");
+			string+=(i+":["+lucasNumber[i]+"], ");
+		}
+		string+=("\n");
+		return string;
+	}
+	/*FIN TOSTRING*/
+	/*AUTRES METHODES*/
+	//Calcul par réccurence le nombre du Ième entier (Un+2 = Un+1 + Un)
 	public void calculateReccurence() {
+		//On utilise une boucle pour calculer chaque nombre
 		int i=0;
 		while(i<getLength()) {
+			//Si i = 0, nombre = 2
 			if(i==0) lucasNumber[i] = 2;
+			//Sinon si i = 1, nombre = 1
 			else if(i==1) lucasNumber[i] = 1;
+			//Sinon i = Un-1 + Un-2
 			else lucasNumber[i] = lucasNumber[i-1] + lucasNumber[i-2];
 			i++;
 		}
 	}
-	public String toString() {
-		StringBuffer sf = new StringBuffer();
-		sf.append("Tab size: "+getLength());
-		for(int i=0; i<getLength(); i++) {
-			if(i%10 == 0) sf.append("\n");
-			sf.append(i+":["+lucasNumber[i]+"], ");
-		}
-		sf.append("\n");
-		//return "Tab size: "+getLength()+ "\n";
-		return sf.toString();
-	}
-	/*FIN MUTATEURS*/
+	/*FIN AUTRES METHODES*/
 }

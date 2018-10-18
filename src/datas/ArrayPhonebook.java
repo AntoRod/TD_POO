@@ -50,6 +50,7 @@ public class ArrayPhonebook implements Phonebook_Interface{
 	}
 	//Aouter un contact au répertoire (attribut par attribut)
 	public void addContact(String name, String firstName, String number, String homeNumber, String mail) throws ElementAlreadyExistsException{
+		//Utilisation de la méthode addContact en créant le nouveau contact dedans
 		addContact(new Contact(name, firstName, number, homeNumber, mail));
 	}
 	//Vérifie l'existence d'un contact dans le répertoire
