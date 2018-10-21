@@ -1,5 +1,7 @@
 package tests;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.NoSuchElementException;
 
 import datas.*;
@@ -26,7 +28,15 @@ public interface TestArrayPhonebook_Interface {
 			//Test NoSuchElementException
 //T			search = arrayPhonebook.searchByNumber("0123056886");
 			System.out.println("search number 0123056886: "+ search);
-		} catch (NoSuchElementException|ElementAlreadyExistsException e) {e.printStackTrace();}
+			File file = new File("arrayPhonebook.txt");
+			arrayPhonebook.savePhonebookTXT(file);
+			FileManagement fileManagement = new FileManagement();
+			fileManagement.readFile(file);
+			
+			arrayPhonebook.backupFromTXT(file);
+			System.out.print(arrayPhonebook);
+		} catch (NoSuchElementException|ElementAlreadyExistsException e) {e.printStackTrace();} 
+			catch (IOException e) {e.printStackTrace();}
 
 	}
 }

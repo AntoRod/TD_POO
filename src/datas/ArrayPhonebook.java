@@ -1,5 +1,11 @@
 package datas;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -114,6 +120,63 @@ public class ArrayPhonebook implements Phonebook_Interface{
 		}
 		//Sinon lancer l'exception "le contact n'existe pas"
 		throw new NoSuchElementException("There is no "+name+ " "+firstName+" in the Phonebook");
+	}
+	//Sauvegarde des contacts dans un fichier TXT
+	public void savePhonebookTXT() throws IOException {
+		savePhonebookTXT(new File("phonebook.txt"));
+	}
+	//Sauvegarde des contacts dans un fichier TXT en spécifiant son nom
+	public void savePhonebookTXT(String fileName) throws IOException {
+		savePhonebookTXT(new File(fileName));
+	}
+	//Sauvegarde des contacts dans un fichier TXT spécifique
+	public void savePhonebookTXT(File file) throws IOException {
+		//On peut préciser qu'on sauvegarde dans un fichier texte
+		System.out.println("Saving phonebook in "+file.getName()+"\n");
+		//On utilise un BufferedWriter
+		BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+		//Si le fichier existe déjà, on l'overwrite
+		if(file.exists()) file.delete();
+		//On utilise un iterator pour enregistrer les contacts
+		Iterator<Contact> iterator = phonebook.iterator();
+		Contact temp;
+		while(iterator.hasNext()) {
+			//On utilise la méthode de toString avec séparateur pour écrire dans le fichier
+			temp = iterator.next();
+			bw.append(temp.toString(";")+"\r\n");
+		}
+		//On oublie pas de flush/close le BufferedWriter
+		bw.flush();
+		bw.close();
+	}
+	//Permet de supprimer les contacts du répertoire
+	public void deleteContacts() {
+		if(!phonebook.isEmpty()) {
+			phonebook.removeAll(phonebook);
+			System.out.print("ALL Contacts deleted...\n");
+		}
+	}
+	//Récupération des contacts à partir d'un fichier TXT
+	public void backupFromTXT() throws IOException {
+		backupFromTXT(new File("arrayPhonebook.txt"));
+	}
+	//Récupération des contacts à partir d'un fichier TXT en spécifiant son nom
+	public void backupFromTXT(String fileName) throws IOException {
+		backupFromTXT(new File(fileName));
+	}
+	//Récupération des contacts à partir d'un fichier TXT spécifique
+	public void backupFromTXT(File file) throws IOException {
+		deleteContacts();
+		System.out.println("Recovering contacts from a backup file: "+file.getName()+"\n");
+		BufferedReader br = new BufferedReader(new FileReader(file));
+		String line = br.readLine();
+		while(line != null) {
+			String[] s = line.split(";");
+			phonebook.add(new Contact(s[0], s[1], s[2], s[3], s[4]));
+			line = br.readLine();
+		}
+		
+		br.close();
 	}
 	/*FIN AUTRES METHODES*/
 }

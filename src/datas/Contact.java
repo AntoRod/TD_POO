@@ -64,6 +64,10 @@ public class Contact {
 	public String toString() {
 		return "{Name: "+getName()+", First Name: "+getFirstName()+", Phone: "+getPhone()+", Home Phone: "+getHomePhone()+", Mail: "+getMail()+"}";
 	}
+	//Tostring avec séparateur, sert pour le stockage des contacts dans des fichiers
+	public String toString(String separator) {
+		return getName()+separator+getFirstName()+separator+getPhone()+separator+getHomePhone()+separator+getMail();
+	}
 	/*FIN TOSTRING*/
 	/*AUTRES METHODES*/
 	//Redéfinition de la méthode equals (ne prend en compte QUE les attributs, pas les autres informations)

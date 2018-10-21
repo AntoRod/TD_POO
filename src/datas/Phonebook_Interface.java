@@ -1,6 +1,7 @@
 package datas;
 
-import java.util.NoSuchElementException;
+import java.io.*;
+import java.util.*;
 
 public interface Phonebook_Interface {
 	
@@ -16,4 +17,16 @@ public interface Phonebook_Interface {
 	public Boolean searchByFirstName(String firstName) throws NoSuchElementException;
 	//Rechercher un contact par numéro
 	public Boolean searchByNumber(String number) throws NoSuchElementException;
+	//Sauvegarde des contacts dans un fichier TXT
+	public void savePhonebookTXT() throws IOException;
+	//Sauvegarde des contacts dans un fichier TXT en spécifiant son nom
+	public void savePhonebookTXT(String filename) throws IOException;
+	//Sauvegarde des contacts dans un fichier TXT spécifique
+	public void savePhonebookTXT(File file)throws IOException;
+	//Récupération des contacts à partir d'un fichier TXT
+	public void backupFromTXT() throws IOException;
+	//Récupération des contacts à partir d'un fichier TXT en spécifiant son nom
+	public void backupFromTXT(String fileName) throws IOException;
+	//Récupération des contacts à partir d'un fichier TXT spécifique
+	public void backupFromTXT(File file) throws IOException;
 }
