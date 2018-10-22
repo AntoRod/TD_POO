@@ -1,5 +1,8 @@
 package datas;
 
+import exception.LimitReachedException;
+import interfaces.Counting;
+
 public class CyclicCounter extends BoundedCounter implements Counting {
 	
 	//ATTRIBUTS

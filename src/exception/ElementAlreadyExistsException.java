@@ -1,4 +1,4 @@
-package datas;
+package exception;
 
 public class ElementAlreadyExistsException extends Exception{
 	
@@ -10,7 +10,7 @@ public class ElementAlreadyExistsException extends Exception{
 	public ElementAlreadyExistsException() {
 		this(null);
 	}
-	ElementAlreadyExistsException(String message) {
+	public ElementAlreadyExistsException(String message) {
 		//Utilisation de "Super" pour lancer l'exception de la même façon que les autres (avec les variables par défaut)
 		super(message);
 	}

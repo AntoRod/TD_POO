@@ -1,6 +1,7 @@
 package tests;
 
 import datas.*;
+import exception.LimitReachedException;
 
 public class TestBoundedCounter {
 	public static void main(String[] args) {

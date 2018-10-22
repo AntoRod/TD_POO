@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.NoSuchElementException;
 
 import datas.*;
+import exception.ElementAlreadyExistsException;
+import interfaces.Phonebook_Interface;
 
 public interface TestArrayPhonebook_Interface {
 	public static void main(String[] args) {

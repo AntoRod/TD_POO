@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+import exception.ElementAlreadyExistsException;
+import interfaces.Phonebook_Interface;
+
 public class ArrayPhonebook implements Phonebook_Interface{
 	
 	//ATTRIBUTS
@@ -151,8 +154,11 @@ public class ArrayPhonebook implements Phonebook_Interface{
 	}
 	//Permet de supprimer les contacts du répertoire
 	public void deleteContacts() {
+		//Si le répertoire n'est pas déjà vide
 		if(!phonebook.isEmpty()) {
+			//On remove tous les contacts à l'aide de la méthode des arrayList
 			phonebook.removeAll(phonebook);
+			//On peut préciser qu'on supprime les contacts
 			System.out.print("ALL Contacts deleted...\n");
 		}
 	}
@@ -166,16 +172,24 @@ public class ArrayPhonebook implements Phonebook_Interface{
 	}
 	//Récupération des contacts à partir d'un fichier TXT spécifique
 	public void backupFromTXT(File file) throws IOException {
+		//On supprime tous les contacts
 		deleteContacts();
+		//On peut préciser qu'on fait un backup depuis un fichier texte
 		System.out.println("Recovering contacts from a backup file: "+file.getName()+"\n");
+		//On utilise un BufferedReader pour lire le fichier
 		BufferedReader br = new BufferedReader(new FileReader(file));
+		//On récupère la première ligne
 		String line = br.readLine();
+		//Tant que les lignes sont non nulles, on récupère les informations
 		while(line != null) {
+			//Utilisation de la méthode String.split(separator) pour séparer les données
 			String[] s = line.split(";");
+			//On ajoute ensuite le contact avec les informations (dans l'ordre) au répertoire
 			phonebook.add(new Contact(s[0], s[1], s[2], s[3], s[4]));
+			//On passe à la ligne suivante
 			line = br.readLine();
 		}
-		
+		//On oublie pas de close le BufferedReader
 		br.close();
 	}
 	/*FIN AUTRES METHODES*/

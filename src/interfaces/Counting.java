@@ -1,4 +1,6 @@
-package datas;
+package interfaces;
+
+import exception.LimitReachedException;
 
 public interface Counting {
 	//Interface de comptage

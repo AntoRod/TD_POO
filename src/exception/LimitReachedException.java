@@ -1,4 +1,4 @@
-package datas;
+package exception;
 
 public class LimitReachedException extends Exception{
 
@@ -9,7 +9,7 @@ public class LimitReachedException extends Exception{
 	public LimitReachedException() {
 		this(null);
 	}
-	LimitReachedException(String message) {
+	public LimitReachedException(String message) {
 		//Utilisation de "Super" pour lancer l'exception de la même façon que les autres (avec les variables par défaut)
 		super(message);
 	}

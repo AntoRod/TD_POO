@@ -1,5 +1,8 @@
 package datas;
 
+import exception.LimitReachedException;
+import interfaces.Counting;
+
 public class BoundedCounter extends Counter implements Counting {
 	
 	//ATTRIBUTS

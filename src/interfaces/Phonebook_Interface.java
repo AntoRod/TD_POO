@@ -1,7 +1,10 @@
-package datas;
+package interfaces;
 
 import java.io.*;
 import java.util.*;
+
+import datas.Contact;
+import exception.ElementAlreadyExistsException;
 
 public interface Phonebook_Interface {
 	

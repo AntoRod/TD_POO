@@ -1,5 +1,10 @@
 package datas;
 
+import java.io.File;
+import java.io.IOException;
+
+import interfaces.Phonebook_Interface;
+
 public class Phonebook implements Phonebook_Interface{
 	
 	//ATTRIBUTS
@@ -110,4 +115,34 @@ public class Phonebook implements Phonebook_Interface{
 		return false;
 	}
 	/*FIN AUTRES METHODES*/
+	@Override
+	public void savePhonebookTXT() throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void savePhonebookTXT(String filename) throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void savePhonebookTXT(File file) throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void backupFromTXT() throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void backupFromTXT(String fileName) throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void backupFromTXT(File file) throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
 }

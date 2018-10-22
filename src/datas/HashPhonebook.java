@@ -1,8 +1,10 @@
 package datas;
 
-import java.util.ArrayList;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
-import java.util.Iterator;
+
+import interfaces.Phonebook_Interface;
 
 public class HashPhonebook implements Phonebook_Interface{
 	
@@ -72,4 +74,34 @@ public class HashPhonebook implements Phonebook_Interface{
 		else return false;
 	}
 	/*FIN AUTRES METHODES*/
+	@Override
+	public void savePhonebookTXT() throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void savePhonebookTXT(String filename) throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void savePhonebookTXT(File file) throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void backupFromTXT() throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void backupFromTXT(String fileName) throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void backupFromTXT(File file) throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
 }

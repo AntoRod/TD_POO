@@ -2,6 +2,7 @@ package tests;
 
 import java.util.Random;
 import datas.*;
+import exception.LimitReachedException;
 
 public class TestChronometer {
 	public static void main(String[] args) {

@@ -1,6 +1,8 @@
 package tests;
 
 import datas.*;
+import exception.ElementAlreadyExistsException;
+import interfaces.Phonebook_Interface;
 
 public interface TestHashPhonebook {
 	public static void main(String[] args) {
