@@ -28,6 +28,9 @@ public class CyclicCounter extends BoundedCounter implements Counting {
 	public String toString() {
 		return "Cycle = "+ getCycle() +", "+super.toString();
 	}
+	public String stringValues() {
+		return ""+getValue()+"/"+getMaxValue()+" ("+cycleCount+")";
+	}
 	/*FIN TOSTRING*/
 	/*AUTRES METHODES*/
 	//Incrémenter le compteur de 1

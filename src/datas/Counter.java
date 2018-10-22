@@ -35,6 +35,9 @@ public class Counter implements Counting{
 	public String toString() {
 		return "Value = "+ getValue();
 	}
+	public String stringValues() {
+		return ""+getValue();
+	}
 	/*FIN TOSTRING*/
 	/*AUTERS METHODES*/
 	//Incrémenter le compteur de 1

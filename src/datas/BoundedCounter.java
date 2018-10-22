@@ -29,6 +29,9 @@ public class BoundedCounter extends Counter implements Counting {
 	public String toString() {
 		return super.toString()+"/"+maxValue+"\n";
 	}
+	public String stringValues() {
+		return ""+getValue()+"/"+maxValue;
+	}
 	/*FIN TOSTRING*/
 	/*AUTRES METHODES*/
 	//Incrémentation du compteur de 1  
